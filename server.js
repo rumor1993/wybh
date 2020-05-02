@@ -1,10 +1,11 @@
-var express = require('express') 
-var app = express() 
- 
-var pgp = require("pg-promise")(/*options*/);
-var db = pgp("postgres://wybh:wybh@13.125.224.67:5432/wybhdb");
-var bodyParser = require('body-parser')
+const express = require('express') 
+const app = express() 
+const pgp = require("pg-promise")(/*options*/);
+const config = require('./config/dev')
 
+
+const db = pgp(config.pgURI);
+const bodyParser = require('body-parser')
 
 
 app.use(bodyParser.json())
