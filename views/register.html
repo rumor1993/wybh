@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <link rel="stylesheet" href="/css/register.css" />
+    <script src="/js/register.js"></script>
+    <title>About</title>
+  </head>
+  <body>
+    <div id="login-page" class="row">
+      <div class="col s12 z-depth-4 card-panel">
+        <form class="login-form" onsubmit="return false">
+          <div class="row">
+            <div class="input-field col s12 center">
+              <h4>Register</h4>
+              <p class="center">Join to our community now !</p>
+            </div>
+          </div>
+
+          <div class="row margin">
+            <div class="input-field col s12">
+              <!-- <i class="mdi-social-person-outline prefix"></i> -->
+              <i class="material-icons prefix">person_add</i>
+              <input id="id" name="id" type="text" />
+              <label for="id">ID</label>
+            </div>
+          </div>
+
+          <div class="row margin">
+            <div class="input-field col s12">
+              <!-- <i class="mdi-social-person-outline prefix"></i> -->
+              <i class="material-icons prefix">account_circle</i>
+              <input id="username" name="username" type="text" />
+              <label for="username">Username</label>
+            </div>
+          </div>
+
+          <div class="row margin">
+            <div class="input-field col s12">
+              <!-- <i class="mdi-action-lock-outline prefix"></i> -->
+              <i class="material-icons prefix">vpn_key</i>
+              <input id="password" name="password" type="password" />
+              <label for="password">Password</label>
+            </div>
+          </div>
+
+          <div class="row margin">
+            <div class="input-field col s12">
+              <!-- <i class="mdi-action-lock-outline prefix"></i> -->
+              <i class="material-icons prefix">vpn_key</i>
+              <input id="password_a" name="cpassword" type="password" />
+              <label for="password_a">Password again</label>
+            </div>
+          </div>
+
+          <!-- <div class="row margin">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">email</i>
+              <input id="email" name="email" type="text" style="cursor: auto" />
+              <label for="email">Email</label>
+            </div>
+          </div> -->
+
+          <div class="row margin">
+            <div class="input-field col s12">
+              <!-- <i class="mdi-social-person-outline prefix"></i> -->
+              <i class="material-icons prefix">wc</i>
+              <input id="sex" name="sex" type="text" style="cursor: auto" />
+              <label for="sex">Sex</label>
+            </div>
+          </div>
+
+          <div class="row margin">
+            <div class="input-field col s12">
+              <!-- <i class="mdi-social-person-outline prefix"></i> -->
+              <i class="material-icons prefix">iso</i>
+              <input id="age" name="age" type="text" style="cursor: auto" />
+              <label for="age">Age</label>
+            </div>
+          </div>
+
+          <div class="row margin">
+            <div class="input-field col s12">
+              <!-- <i class="mdi-social-person-outline prefix"></i> -->
+              <i class="material-icons prefix">language</i>
+              <input id="area" name="area" type="text" style="cursor: auto" />
+              <label for="area">Area</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <button
+                id="registerBtn"
+                type="submit"
+                class="btn waves-effect waves-light col s12"
+              >
+                REGISTER NOW
+              </button>
+            </div>
+            <div class="input-field col s12">
+              <p class="margin center medium-small sign-up">
+                Already have an account? <a href="login">Login</a>
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
