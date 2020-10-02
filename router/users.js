@@ -12,6 +12,7 @@ router.get("/:id", function (req, res) {
 });
 
 router.post("/", async (req, res) => {
+  console.log(req.body);
   if (
     !req.body.id ||
     !req.body.password ||
@@ -58,7 +59,7 @@ getUserInfo = (req, res) => {
 
 registerUser = (req, res) => {
   db.one(
-    "INSERT INTO Users(id, password, name, sex, age, area, rgsn_dttm) VALUES($1, $2, $3, $4, $5, $6, to_char(now(),'YYYY-MM-DD HH24:MI:SS')) RETURNING id",
+    "INSERT INTO Users(id, password, name, sex, age, area, email , rgsn_dttm) VALUES($1, $2, $3, $4, $5, $6, $7,to_char(now(),'YYYY-MM-DD HH24:MI:SS')) RETURNING id",
     [
       req.body.id,
       req.body.password,
@@ -66,16 +67,15 @@ registerUser = (req, res) => {
       req.body.sex,
       req.body.age,
       req.body.area,
+      req.body.email,
     ]
   )
     .then((data) => {
       jsonData = { code: 200, message: "성공적으로 데이터가 삽입되었습니다" };
-      console.log("DATA:", data);
       res.send(jsonData);
     })
     .catch((error) => {
       jsonData = { code: "", message: "회원가입에 실패했습니다." };
-      console.log(error);
       res.send(jsonData);
     });
 };
