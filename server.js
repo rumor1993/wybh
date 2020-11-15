@@ -7,8 +7,10 @@ const userRouter = require("./router/users");
 const loginRouter = require("./router/login");
 const registerRouter = require("./router/register");
 const chatRouter = require("./router/chat");
+const messageRouter = require("./router/message");
 const bodyParser = require("body-parser");
 
+//app.use(cookieParser);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -21,6 +23,7 @@ app.use("/users", userRouter);
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
 app.use("/chat", chatRouter);
+app.use("/message", messageRouter);
 
 app.get("/", (req, res) => {
   res.render("login.html");

@@ -417,3 +417,7 @@ div.message.right .corner {
   overflow: hidden;
   border-radius: 6px;
 }
+
+.add-block {
+  display: block;
+}

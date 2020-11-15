@@ -5,20 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <!-- Compiled and minified CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
     <link rel="stylesheet" href="/css/register.css" />
     <script src="/js/register.js"></script>
+
+    <meta name="viewport" content="width = device-width, initial-scale = 1" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-2.1.1.min.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
     <title>About</title>
   </head>
   <body>
@@ -68,28 +72,62 @@
             </div>
           </div>
 
-          <!-- <div class="row margin">
+          <div class="row margin">
             <div class="input-field col s12">
               <i class="material-icons prefix">email</i>
               <input id="email" name="email" type="text" style="cursor: auto" />
               <label for="email">Email</label>
             </div>
-          </div> -->
-
-          <div class="row margin">
-            <div class="input-field col s12">
-              <!-- <i class="mdi-social-person-outline prefix"></i> -->
-              <i class="material-icons prefix">wc</i>
-              <input id="sex" name="sex" type="text" style="cursor: auto" />
-              <label for="sex">Sex</label>
-            </div>
           </div>
 
           <div class="row margin">
             <div class="input-field col s12">
+              <i class="material-icons prefix">wc</i>
+              <input
+                id="sex"
+                name="sex"
+                type="text"
+                style="cursor: auto; border: none"
+                readonly
+              />
+              <label for="sex"></label>
+              <span style="position: absolute; left: 20%; top: 5px">
+                <label>
+                  <input
+                    id="male"
+                    name="group1"
+                    type="radio"
+                    class="with-gap sex-check"
+                    checked
+                  />
+                  <span>Male</span>
+                </label>
+              </span>
+              <span style="position: absolute; left: 50%; top: 5px">
+                <label>
+                  <input
+                    id="female"
+                    name="group1"
+                    type="radio"
+                    class="with-gap sex-check"
+                  />
+                  <span>Female</span>
+                </label>
+              </span>
+            </div>
+          </div>
+
+          <div class="row margin">
+            <div class="input-field col s12 range-field">
               <!-- <i class="mdi-social-person-outline prefix"></i> -->
               <i class="material-icons prefix">iso</i>
-              <input id="age" name="age" type="text" style="cursor: auto" />
+              <input
+                id="age"
+                name="age"
+                type="range"
+                style="width: 65%; cursor: auto; left: 30px; top: 6px"
+                value="0"
+              />
               <label for="age">Age</label>
             </div>
           </div>
