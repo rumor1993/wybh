@@ -87,6 +87,7 @@ router.post("/", async (req, res) => {
         });
     })
     .catch((error) => {
+ 
       console.log(error);
       jsonData = { code: "", message: "채팅방 생성에 실패했습니다." };
       res.send(jsonData);

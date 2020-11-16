@@ -3,19 +3,23 @@ const db = require("../middleware/database");
 const bcrypt = require("../bcrypt");
 const router = express.Router();
 
-router.get("/", function (req, res) {
-  getUsersInfo(req, res);
+router.get("/", (req, res) => {
+  findUserList(req, res);
 });
 
-router.get("/:id", function (req, res) {
-  getUserInfo(req, res);
+router.get("/:id", (req, res) => {
+  findUserById(req, res);
 });
+
+router.get("/exists/:id", (req, res) => {
+  isExistsId(req, res)
+})
 
 router.post("/", async (req, res) => {
   console.log(req.body);
+  
   if (
     !req.body.id ||
-    !req.body.password ||
     !req.body.name ||
     !req.body.sex ||
     !req.body.age ||
@@ -25,10 +29,10 @@ router.post("/", async (req, res) => {
   }
 
   req.body.password = await bcrypt.encrypt(req.body.password);
-  registerUser(req, res);
+  createUser(req, res);
 });
 
-getUsersInfo = (req, res) => {
+function findUserList(req, res) {
   db.many(
     "SELECT ID, NAME, SEX, AGE, AREA, password,RGSN_DTTM, EDIT_DTTM FROM Users"
   )
@@ -42,9 +46,9 @@ getUsersInfo = (req, res) => {
     });
 };
 
-getUserInfo = (req, res) => {
+function findUserById(req, res) {
   db.one(
-    "SELECT ID, NAME, SEX, AGE, AREA, RGSN_DTTM, EDIT_DTTM FROM Users WHERE ID = $1 r",
+    "SELECT ID, NAME, SEX, AGE, AREA, RGSN_DTTM, EDIT_DTTM FROM Users WHERE ID = $1",
     [req.params.id]
   )
     .then(function (data) {
@@ -57,9 +61,15 @@ getUserInfo = (req, res) => {
     });
 };
 
-registerUser = (req, res) => {
+function createUser(req, res) {
   db.one(
-    "INSERT INTO Users(id, password, name, sex, age, area, email , rgsn_dttm) VALUES($1, $2, $3, $4, $5, $6, $7,to_char(now(),'YYYY-MM-DD HH24:MI:SS')) RETURNING id",
+    `SELECT ID FROM USERS WHERE ID = $1`,
+    [req.body.id]
+  ).then(data => console.log(data))
+
+
+  db.one(
+    "INSERT INTO Users(id, password, name, sex, age, area, email ,token, rgsn_dttm) VALUES($1, $2, $3, $4, $5, $6, $7, $8, to_char(now(),'YYYY-MM-DD HH24:MI:SS')) RETURNING id",
     [
       req.body.id,
       req.body.password,
@@ -68,6 +78,7 @@ registerUser = (req, res) => {
       req.body.age,
       req.body.area,
       req.body.email,
+      req.body.token
     ]
   )
     .then((data) => {
@@ -79,5 +90,19 @@ registerUser = (req, res) => {
       res.send(jsonData);
     });
 };
+
+function isExistsId(req, res) {
+  db.one(
+    "SELECT COUNT(0) as count FROM Users WHERE ID = $1",
+    [req.params.id]
+  )
+    .then((data) => {
+      console.log(data)
+      res.status(204);
+    })
+    .catch((error) => {
+
+    });
+}
 
 module.exports = router;
