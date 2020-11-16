@@ -1,5 +1,5 @@
 const userId = getCookie("userId");
-const socket = io.connect("127.0.0.1:3001", { rememberUpgrade: true });
+const socket = io.connect("http://wybh.co.kr:3001", { rememberUpgrade: true });
 socket.emit("join", userId);
 
 $(document).ready(async () => {
